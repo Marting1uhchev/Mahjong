@@ -5,7 +5,6 @@ import os.path
 import random
 
 def shuffle_tiles(tiles):
-  # Shuffle Tiles
   for tile in tiles:
     r = random.choice(range(len(tiles)))     
     tile, tiles[r] = Tile( tiles[r].tileno, tile.x, tile.y, tile.z ), \
@@ -41,7 +40,6 @@ class Tile:
     right = False
     
     for tile in tiles:
-      # Check against pieces obscuring us above our tile.
       if (tile.z > self.z and tile.x + 20 == self.x and tile.y - 30 == self.y) or \
          (tile.z > self.z and tile.x - 20 == self.x and tile.y - 30 == self.y) or \
          (tile.z > self.z and tile.x + 20 == self.x and tile.y + 30 == self.y) or \
@@ -55,7 +53,6 @@ class Tile:
          (tile.z > self.z and tile.y - 30 == self.y and tile.x == self.x):
         return True
         
-      # Check against even-level touching pieces.
       if tile.z == self.z and tile.y == self.y:
         if self.x+40 == tile.x:
           right = True
